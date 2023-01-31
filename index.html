@@ -73,6 +73,7 @@ nav {
         margin: 0 auto;
         background-color: #d6336c;
       }
+      .random-letter-Btn
       .input1 {
         background-color: #e9ecef;
         padding: 20px;
@@ -103,17 +104,33 @@ nav {
         border-radius: 3rem;
         /* opacity: 0.9; */
       }
-      .letterCard {
+      .Card1, .Card2, .Card3 {
         background-color: lightgray;;
         border: 1px solid lightgray;
-        display: inline-block;
+        display: flex;
+        
+        gap: 16px;
         max-width: 300px;
         border-radius: 15px;
+        
         min-height: 450px;
         /* margin: 25px; */
         box-shadow: 5px 10px 18px black;
         transition: 0.15s ease-in-out;
-        padding: 10px 0px;
+        padding: 20px 0px;
+      }
+      .display-flex {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .testLetter {
+        font-size: 5em;
+        width: 80px;
+        margin: 8px auto;
+        border: 1px solid #d6336c;
+        background-color: #e9ecef;
+        color:#5f3dc4;
       }
       #colored {
         background-color: #d6336c;
@@ -122,6 +139,7 @@ nav {
       .hidden {
         display: none;
       }
+      
 
 
 .left,
@@ -135,6 +153,7 @@ nav {
    /* Should be removed. Only for demonstration */
 }
 
+
 /* Style the left column */
 .left {
   grid-area: left;
@@ -145,6 +164,8 @@ nav {
 /* Style the middle column */
 .middle {
   grid-area: middle;
+  display: flex;
+  gap: 16px;
 }
 .grid-container {
   grid-template-areas:
@@ -203,23 +224,69 @@ nav {
         <button id="level-1">Reading LEVEL 1</button>
 
         <button id="level-2">Reading LEVEL 2</button>
+        <button id="test">Test</button>
       </div>
     </section>
   </div>
-  <div class="middle"><div>
-        <div id="random-div">
-          <h1 class="letters words">Азбука</h1>
-          <p>Кликни на бутона за да научиш буквите.</p> 
+  <div class="middle">
+    <section class='Card1 hidden'>
+      <div class='display-flex'><img
+        class='level1img'
+        src="https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
+       alt="reading"
+     />
+<h2 class="letters words">Азбука</h2>
+<p class='letter'>Кликни на бутона за да научиш буквите.</p>
+
+<button class="random-letter-Btn">Наред</button>
 </div>
-        <div id="second-randomDiv"></div>
-        <button class="random-letter-Btn random-word-Btn">Click!</button>
-      </div></div>  
+</section>
+
+<section class='Card2 hidden'>
+ <div class='display-flex'><img
+  class='level2img'
+    src="https://images.unsplash.com/photo-1511548774318-563182fe8d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
+   alt="reading"
+ />
+<h2 class="letters2">Азбука</h2>
+<hp>Кликни на бутона за да четеш.</hp> 
+<h1 class='letter2'></h1>
+<button class="random-letter-Btn2 ">Наред...2</button>
+</div>
+</section>
+
+<section class='Card3 hidden'>
+  <div> <img
+  class='level2img'
+    src="https://images.unsplash.com/photo-1602516297586-312f705402cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+   alt="test"
+ />
+ <h2 class='testTitle'></h2>
+  <p>Познай буквата!</p>
+  <h1 class='testLetter'></h1>
+  <button class="random-letter-Btn3 ">Наред...3</button>
+</div>
+</section>
+
+</div>
+
+
+
+
+
+  
+  
+        
+    
   <!-- <div class="right">This section is in process of Development</div> -->
   
   <!-- <div class="footer">
     <p>Footer</p>
   </div> -->
-</div>
+  
+
+
+
 <script src='app.js'></script>
 </body>
 </html>

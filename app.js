@@ -3,76 +3,131 @@
 // create an object where each letter is connected to picture and they show randomly
 // const display = document.getElementById("displayLetters");
 // GET THE DATA
-// const funcLocalData = (cards) => {
-//
 
-//   cards.map((c) => {
-//     cardsData.push({
-//       level1: c,
-//       level2: c,
-//     });
-//   });
-//   console.log(cardsData);
-//   JSON.stringify(cardsData);
-// };
+const levelOne = document.getElementById("level-1");
+const levelTwo = document.getElementById("level-2");
+const randomDiv = document.querySelector(".random-div");
+const secondrandomDiv = document.querySelector(".second-randomDiv");
+const card = document.querySelector(".Card1");
+const randomLBTN = document.querySelector(".random-letter-Btn");
+const randomlBTN2 = document.querySelector(".random-letter-Btn2");
+const randomlBTN3 = document.querySelector(".random-letter-Btn3");
+const randomDivBTN = document.querySelector(".startBtn");
+const h1letters = document.querySelector(".letters");
+const h2letters = document.querySelector(".letters2");
+const l1Img = document.querySelector(".level1img");
+const l2Img = document.querySelector(".level2img");
+const l1Letter = document.querySelector(".letter2");
+const letterCard = document.querySelector(".Card2");
+const testCard = document.querySelector(".Card3");
+const testBTN = document.getElementById("test");
+const testP = document.querySelector(".letter");
+const testL = document.querySelector(".testLetter");
+const testT = document.querySelector(".testTitle");
 
-// document.getElementById("level-1").onclick = function () {
-//   alert("button was clicked");
+// call the functions at the same btn
+
 let itemsData = [];
 let itemsData2 = [];
+
+// toggle betean divs
+const showInitialDiv = () => {
+  if (card.style.display === "none") {
+    card.style.display = "block";
+  } else {
+    card.style.display = "none";
+  }
+};
+levelOne.addEventListener("click", showInitialDiv);
+
+const showInitialDiv2 = () => {
+  if (letterCard.style.display === "none") {
+    letterCard.style.display = "block";
+  } else {
+    letterCard.style.display = "none";
+  }
+};
+levelTwo.addEventListener("click", showInitialDiv2);
+
+const showInitialDiv3 = () => {
+  if (testCard.style.display === "none") {
+    testCard.style.display = "block";
+  } else {
+    testCard.style.display = "none";
+  }
+};
+testBTN.addEventListener("click", showInitialDiv3);
+
 function showRandomLetter() {
   fetch(`./learningData.json`)
     .then((res) => res.json())
     .then((data) => {
-      // convert to na Arrey
-
-      // map tru arrey acessing the index and
       for (let i = 0; i < data.level1.length; i++) {
         let result =
           data.level1[Math.floor(Math.random() * data.level1.length)];
-        document.getElementById(
-          "random-div"
-        ).innerHTML = `<div class="letterCard">
-            <img
-              src="${result.image}"
-              alt="${result.title}"
-            />
-            <div class="letterCardDetails">
-     <h2>${result.title}</h2>
-     <h1>${result.letter}</h1>
-  </div>
-  <p>Кликни на бутона за да научиш буквите.</p>
- </div>`;
-
-        // let item2 = itemsData[1];
-        // let result1 = item2[Math.floor(Math.random() * itemsData[1].length)];
-        // console.log(result, result1);
+        console.log(result);
+        l1Img.src = `${result.image}`;
+        l1Img.alt = `${result.title}`;
+        h1letters.innerHTML = `${result.title}`;
+        l1Letter.innerHTML = `${result.letter}`;
+        letterCard.style.display === "none";
       }
     });
 }
-document.getElementById("level-1").addEventListener("click", showRandomLetter);
+randomLBTN.addEventListener("click", showRandomLetter);
 
-// the level2
-const level2 = ["ан", "ен", "на", "не", "Ана", "Ани", "Нена"];
+// // function toggle() {
+
+// // }
+
+// // the level2
+const level2 = [
+  "ан",
+  "ен",
+  "на",
+  "не",
+  "но",
+  "Ана",
+  "Ани",
+  "Нена",
+  "Баба",
+  "Емо",
+  "Мое",
+  "има",
+  "ние",
+  "мие",
+];
 
 const level2Func = () => {
-  document.querySelector(".letterCard").style.display = "none";
   for (let i = 0; i < level2.length; i++) {
     let result2 = level2[Math.floor(Math.random() * level2.length)];
+    console.log(result2);
+    l2Img.src =
+      "https://images.unsplash.com/photo-1584270845190-c371857dc5dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjIxfHxraWRzJTIwcmVhZGluZyUyMGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60";
 
-    document.getElementById("second-randomDiv").innerHTML = `<div>
-    <div class="letterCard">
-            <img
-              src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-              alt="reading"
-            />
-     
-      <h1 id='colored'>Готов ли си да четеш?</h1>
-      <h1>${result2}</h1>
-    </div>`;
-    // for (let i = 0; i < level2.length; i++) {
-    //   result2 = level2[i][Math.floor(Math.random() * level2.length)];
-    // }
+    l2Img.alt = "reading books";
+    h2letters.innerHTML = "Четене";
+    l1Letter.innerHTML = `${result2}`;
+    card.style.display === "none";
   }
 };
-document.getElementById("level-2").addEventListener("click", level2Func);
+randomlBTN2.addEventListener("click", level2Func);
+// test level1
+function guesLetter() {
+  fetch(`./learningData.json`)
+    .then((res) => res.json())
+    .then((data) => {
+      for (let i = 0; i < data.level1.length; i++) {
+        let result =
+          data.level1[Math.floor(Math.random() * data.level1.length)];
+
+        testT.innerHTML = "Тест";
+
+        testL.innerHTML = `${result.letter}`;
+
+        letterCard.style.display === "none";
+        card.style.display === "none";
+      }
+    });
+}
+randomlBTN3.addEventListener("click", guesLetter);
